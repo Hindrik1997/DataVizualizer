@@ -39,11 +39,22 @@ public abstract class Command extends AbstractAction implements ActionListener {
         frame.setVisible(true);
         frame.repaint();
         SwingUtilities.invokeLater(() -> {
-            action(actionEvent);
-            frame.setVisible(false);
-            frame.dispose();
-            Main.getInstance().getMainFrame().setEnabled(true);
-
+            try
+            {
+                action(actionEvent);
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+                frame.setVisible(false);
+                JOptionPane.showMessageDialog(Main.getInstance().getMainFrame(), "Er is een fout opgetreden tijdens het verwerken van de vraag.", "Fout", JOptionPane.ERROR_MESSAGE);
+            }
+            finally
+            {
+                frame.setVisible(false);
+                frame.dispose();
+                Main.getInstance().getMainFrame().setEnabled(true);
+            }
         });
     }
     public abstract void action(ActionEvent actionEvent);

@@ -26,14 +26,13 @@ class MainView extends JFrame {
     private JPanel _main_panel = null;
     private JPanel _previous_panel = null;
 
-    MainView()
-    {
+    MainView() {
         super("Hoofdmenu");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        _main_panel = new JPanel(new GridLayout(0,2));
-        _main_panel.setMinimumSize(new Dimension(1000,1000));
-        _main_panel.setPreferredSize(new Dimension(1000,1000));
-        Border border = BorderFactory.createEmptyBorder(10,10,10,10);
+        _main_panel = new JPanel(new GridLayout(0, 2));
+        _main_panel.setMinimumSize(new Dimension(1000, 1000));
+        _main_panel.setPreferredSize(new Dimension(1000, 1000));
+        Border border = BorderFactory.createEmptyBorder(10, 10, 10, 10);
         _main_panel.setBorder(border);
         setMainJPanel(_main_panel);
         initialize();
@@ -50,8 +49,7 @@ class MainView extends JFrame {
         });
     }
 
-    private void initialize()
-    {
+    private void initialize() {
         List<String> questionStrings = new ArrayList<>();
         List<Command> commands = setupCommands();
 
@@ -61,25 +59,24 @@ class MainView extends JFrame {
             io.printStackTrace();
         }
 
-        for(int i = 0; i < 10; ++i)
-        {
-            ButtonAndLabel bl = new ButtonAndLabel("Ga naar het antwoord",questionStrings.get(i), new Dimension(50,50));
+        for (int i = 0; i < 10; ++i) {
+            ButtonAndLabel bl = new ButtonAndLabel("Ga naar het antwoord", questionStrings.get(i), new Dimension(50, 50));
             bl.setActionListener(commands.get(i));
             _main_panel.add(bl);
         }
     }
 
-    private List<Command> setupCommands()
-    {
+    private List<Command> setupCommands() {
         List<Command> commands = new ArrayList<>();
 
         commands.add(new ActorLongestCarriereCommand());
         commands.add(new NewYorkLocationCommand());
         commands.add(new MostTerribleActorCommand());
+        commands.add(new BeerCommand());
         commands.add(new DeathliestLocationsCommand());
+        commands.add(new BestOf2K16Command());
 
-        for(int i = 0; i < 10; ++i)
-        {
+        for (int i = 0; i < 10; ++i) {
             commands.add(new Command() {
                 @Override
                 public void action(ActionEvent actionEvent) {
@@ -92,15 +89,14 @@ class MainView extends JFrame {
 
     void setMainJPanel(JPanel panel) {
         this.getRootPane().getContentPane().removeAll();
-        if(panel == null)
-        {
+        if (panel == null) {
             this.add(_main_panel);
         } else
             this.add(panel);
         forceRefresh();
     }
 
-    void forceRefresh(){
+    void forceRefresh() {
         SwingUtilities.updateComponentTreeUI(this);
         this.invalidate();
         this.validate();
@@ -109,5 +105,3 @@ class MainView extends JFrame {
 
 
 }
-
-
