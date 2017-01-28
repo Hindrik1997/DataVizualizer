@@ -75,6 +75,7 @@ class MainView extends JFrame {
         commands.add(new BeerCommand());
         commands.add(new DeathliestLocationsCommand());
         commands.add(new BestOf2K16Command());
+        commands.add(new VerbandSeasonRating());
 
         for (int i = 0; i < 10; ++i) {
             commands.add(new Command() {

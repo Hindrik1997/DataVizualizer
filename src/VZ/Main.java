@@ -27,14 +27,26 @@ public class Main {
 
     private Main()
     {
-        try
-        {
-            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+
+
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            try
+            {
+                UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+            }
+            catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException f)
+            {
+                f.printStackTrace();
+            }
         }
-        catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e)
-        {
-            e.printStackTrace();
-        }
+
 
         _main_view = new MainView();
         _main_model = new SQLManager();
