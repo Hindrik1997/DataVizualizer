@@ -24,9 +24,9 @@ public class RQuestionBase extends JPanel {
         JPanel t = new JPanel(new GridLayout(0,2));
         t.add(new ImagePanelBase(image0, 500,300));
         t.add(new ImagePanelBase(image1,500,300));
-        t.setPreferredSize(new Dimension(1500,300));
-        t.setMinimumSize(new Dimension(1500,300));
-        t.setMaximumSize(new Dimension(1500,300));
+        t.setPreferredSize(new Dimension(1200,300));
+        t.setMinimumSize(new Dimension(1200,300));
+        t.setMaximumSize(new Dimension(1200,300));
         add(t);
         add(new JLabel(conclusie, SwingConstants.LEFT));
 

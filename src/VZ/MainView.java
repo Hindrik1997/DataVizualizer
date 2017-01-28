@@ -2,7 +2,6 @@ package VZ;
 
 import VZ.Abstractions.ButtonAndLabel;
 import VZ.Commands.*;
-import VZ.Main;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -75,16 +74,24 @@ class MainView extends JFrame {
         commands.add(new BeerCommand());
         commands.add(new DeathliestLocationsCommand());
         commands.add(new BestOf2K16Command());
-        commands.add(new VerbandSeasonRating());
 
-        for (int i = 0; i < 10; ++i) {
-            commands.add(new Command() {
-                @Override
-                public void action(ActionEvent actionEvent) {
-                    System.out.println("TEST");
-                }
-            });
-        }
+        commands.add(new Command() {
+            @Override
+            public void action(ActionEvent actionEvent) {
+                System.out.println("TEST");
+            }
+        });
+
+        commands.add(new Command() {
+            @Override
+            public void action(ActionEvent actionEvent) {
+                System.out.println("TEST");
+            }
+        });
+
+        commands.add(new VerbandActricesAge());
+        commands.add(new VerbandSeasonRatings());
+        
         return commands;
     }
 
